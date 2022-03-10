@@ -6,8 +6,39 @@
 #    By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:27:19 by gudias            #+#    #+#              #
-#    Updated: 2022/03/10 17:27:29 by gudias           ###   ########.fr        #
+#    Updated: 2022/03/10 19:32:15 by gudias           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME	= pipex
 
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+INCL	= -I incs
+RM		= rm -f
+
+SRCSDIR	= srcs
+OBJSDIR	= objs
+
+SRCS	= pipex.c
+
+OBJS	= $(SRCS:%.c=$(OBJSDIR)/%.o)
+
+$(OBJSDIR)/%.o = $(SRCSDIR)/%.c
+	mkdir -p $(OBJSDIR)
+	$(CC) $(CLFAGS) $(INCL) -c $< -o $@
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+clean:
+	$(RM) -r $(OBJSDIR)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
