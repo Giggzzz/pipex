@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 17:27:12 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/11 17:49:08 by gudias           ###   ########.fr       */
+/*   Created: 2022/03/11 11:47:04 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/11 12:17:49 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "pipex.h"
 
-void	check_args(int argc, char **argv);
-void	err_quit(int errno);
-//utils
-void	ft_putendl(char *str);
+void	ft_putendl(char *str)
+{
+	if (!str)
+		return ;
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
+	write(1, "\n", 1);
+}

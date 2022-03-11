@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 17:27:12 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/11 17:49:08 by gudias           ###   ########.fr       */
+/*   Created: 2022/03/11 11:39:46 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/11 17:48:53 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "pipex.h"
 
-void	check_args(int argc, char **argv);
-void	err_quit(int errno);
-//utils
-void	ft_putendl(char *str);
+void	err_quit(int errno)
+{
+	if (errno == 1)
+		ft_putendl("ERROR: Bad arguments count");
+	else if (errno == 2)
+		ft_putendl("ERROR: Wrong arguments");
+	else if (errno == 3)
+		ft_putendl("ERROR: File error");
+	else if (errno == 4)
+		ft_putendl("ERROR: Command not found");
+	exit(0);
+}

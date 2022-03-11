@@ -1,0 +1,7 @@
+total 112
+-rw-r--r--  1 gudias  2021_lausanne   1337 Mar 11 14:30 Makefile
+drwxr-xr-x  4 gudias  2021_lausanne    136 Mar 11 14:30 incs
+-rw-r--r--  1 gudias  2021_lausanne      0 Mar 11 14:47 infile
+drwxr-xr-x  5 gudias  2021_lausanne    170 Mar 11 12:05 objs
+-rwxr-xr-x  1 gudias  2021_lausanne  49552 Mar 11 12:05 pipex
+drwxr-xr-x  9 gudias  2021_lausanne    306 Mar 11 14:30 srcs

@@ -6,7 +6,7 @@
 #    By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:27:19 by gudias            #+#    #+#              #
-#    Updated: 2022/03/10 19:32:15 by gudias           ###   ########.fr        #
+#    Updated: 2022/03/11 17:49:06 by gudias           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ RM		= rm -f
 SRCSDIR	= srcs
 OBJSDIR	= objs
 
-SRCS	= pipex.c
+SRCS	= pipex.c error.c utils.c check_args.c
 
 OBJS	= $(SRCS:%.c=$(OBJSDIR)/%.o)
 
-$(OBJSDIR)/%.o = $(SRCSDIR)/%.c
+$(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 	mkdir -p $(OBJSDIR)
 	$(CC) $(CLFAGS) $(INCL) -c $< -o $@
 

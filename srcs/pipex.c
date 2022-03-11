@@ -6,8 +6,15 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:26:56 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/10 17:26:59 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/11 17:49:03 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pipex.h"
 
+int	main(int argc, char **argv)
+{
+	check_args(argc, argv);
+
+	return (0);
+}
