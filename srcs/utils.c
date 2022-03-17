@@ -6,13 +6,13 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:47:04 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/16 15:23:24 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/17 10:24:47 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_printl(char *str)
+void	ft_println(char *str)
 {
 	if (!str)
 		return ;

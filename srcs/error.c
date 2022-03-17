@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:39:46 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/16 17:21:41 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/17 15:26:05 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 void	err_quit(int errno)
 {
 	if (errno == 1)
-		ft_printf("ERROR: Bad arguments count\n");
+		ft_println("ERROR: Bad arguments count");
 	else if (errno == 2)
-		ft_printf("ERROR: Wrong arguments\n");
+		ft_println("ERROR: Wrong arguments");
 	else if (errno == 3)
-		ft_printf("ERROR: File error\n");
+		ft_println("ERROR: File error");
 	else if (errno == 4)
-		ft_printf("ERROR: Command not found\n");
+		ft_println("ERROR: Command not found");
 	else if (errno == 5)
-		ft_printf("ERROR: PIPE FAIL\n");
+		ft_println("ERROR: PIPE FAILED");
 	else if (errno == 6)
-		ft_printf("ERROR: FORK FAIL\n");
+		ft_println("ERROR: FORK FAILED");
+	else if (errno == 7)
+		ft_println("ERROR: EXECVE FAILED");
 	exit(0);
 }
