@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:26:56 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/18 02:32:52 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/18 18:22:04 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,28 @@ int	main(int argc, char **argv, char **envp)
 	av1[2] = NULL;
 	char	*av2[3];
 	av2[0] = "/usr/bin/grep";
-	av2[1] = "aigh";
+	av2[1] = "ioadhg";
 	av2[2] = NULL;
 	if (id == 0)
 	{
 		close(pipe1[0]);
 		dup2(pipe1[1],1);
 		close(pipe1[1]);
-		execve(av[0], av, envp);
+		execve(av1[0], av1, envp);
 		err_quit(7);	
 	}
 	else
 	{
-		//close(pipe1[1]);
-	//	wait(NULL);
-		while (read(pipe1[0], &r, 1)) 
-			write(pipe2[1], &r, 1);
-		
-		id = fork();
-		if (id == -1)
-			err_quit(6);
-
-		if (id == 0)
-		{
-			
-		}
-		else
-		{
-
-		}
-
+		close(pipe1[1]);
+		wait(NULL);
+		//while (read(pipe1[0], &r, 1)) 
+		//	write(pipe2[1], &r, 1);
+		dup2(pipe1[0], 0);
 		close(pipe1[0]);
+		dup2(outfile, 1);
+		execve(av2[0], av2, envp);
+		err_quit(7);
+		//close(pipe1[0]);
 	}
 	return (0);
 }
