@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:26:56 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/18 18:22:04 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/19 00:51:46 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(int argc, char **argv, char **envp)
 	int	outfile;
 
 	//check_args(argc, argv, envp);
-	infile = open(argv[1], O_WRONLY | O_CREAT, 0644);	
+	infile = open(argv[1], O_RDONLY | O_CREAT, 0644);	
 	outfile = open(argv[4], O_WRONLY | O_CREAT, 0644);
-	if (!outfile)
+	if (!infile || !outfile)
 		err_quit(3);
 	if (pipe(pipe1) == -1 || pipe(pipe2) == -1)
 		err_quit(5);
@@ -33,19 +33,20 @@ int	main(int argc, char **argv, char **envp)
 	if (id == -1)
 		err_quit(6);
 
-	char	*av1[3];
+	char	*av1[2];
 	av1[0] = "/usr/bin/cat";
-	av1[1] = "infile";
+	//av1[1] = "infile";
 	//1av[2] = "-c";
 	//1av[3] = "4";
-	av1[2] = NULL;
+	av1[1] = NULL;
 	char	*av2[3];
 	av2[0] = "/usr/bin/grep";
-	av2[1] = "ioadhg";
+	av2[1] = "aigh";
 	av2[2] = NULL;
 	if (id == 0)
 	{
 		close(pipe1[0]);
+		dup2(infile, 0);
 		dup2(pipe1[1],1);
 		close(pipe1[1]);
 		execve(av1[0], av1, envp);
