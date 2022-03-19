@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:26:56 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/19 00:51:46 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/19 02:24:39 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv, char **envp)
 		err_quit(3);
 	if (pipe(pipe1) == -1 || pipe(pipe2) == -1)
 		err_quit(5);
-
+	
 	id = fork();
 	if (id == -1)
 		err_quit(6);
@@ -45,8 +45,8 @@ int	main(int argc, char **argv, char **envp)
 	av2[2] = NULL;
 	if (id == 0)
 	{
-		close(pipe1[0]);
 		dup2(infile, 0);
+		close(pipe1[0]);
 		dup2(pipe1[1],1);
 		close(pipe1[1]);
 		execve(av1[0], av1, envp);
@@ -63,7 +63,6 @@ int	main(int argc, char **argv, char **envp)
 		dup2(outfile, 1);
 		execve(av2[0], av2, envp);
 		err_quit(7);
-		//close(pipe1[0]);
 	}
 	return (0);
 }
