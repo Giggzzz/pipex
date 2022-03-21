@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 11:47:04 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/17 10:24:47 by gudias           ###   ########.fr       */
+/*   Created: 2022/03/21 14:42:59 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/21 17:45:48 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_println(char *str)
+char	*ft_pathjoin(char *s1, char *s2)
 {
-	if (!str)
-		return ;
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-	}
-	write(1, "\n", 1);
+	char	*newstr;
+	int		len;
+	int		i;
+	
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2) + 2;
+	newstr = malloc(sizeof (char) * len);
+	if (!newstr)
+		return (NULL);
+	i = 0;
+	while (*s1)
+		newstr[i++] = *s1++;
+	newstr[i++] = '/';
+	while (*s2)
+		newstr[i++] = *s2++;
+	newstr[i] = '\0';
+	return (newstr);
 }

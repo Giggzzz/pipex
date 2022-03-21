@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   get_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:06:49 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/17 16:34:32 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/21 19:28:02 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void	check_files(char *infile, char *outfile)
+char	*get_path(char **envp)
 {
-	int	fd1;
-	int	fd2;
-
-	fd1 = open(infile, O_RDONLY | O_CREAT, 0644);
-	if (fd1 == -1)
-		err_quit(3);
-	fd2 = open(outfile, O_RDONLY | O_CREAT, 0644);
-	if (fd2 == -1)
-		err_quit(3);
-	close(fd1);
-	close(fd2);
+	while (*envp)
+	{
+		if (!ft_strncmp(*envp, "PATH=", 5))
+				return (*envp + 5);
+		envp++;
+	}
+	return (NULL);
 }
 
-static void	check_cmds(char *cmd1, char *cmd2, char **envp)
+char	*find_cmd_path(char *path, char *cmd)
 {
+	char	**dirs;
+	char	*cmd_path;
 
-	if (0)
-		err_quit(4);
+	dirs = ft_split(path, ':');
+	while (*dirs)
+	{
+		cmd_path = ft_pathjoin(*dirs, cmd);
+		if (access(cmd_path, 0) == 0)
+		{
+			return (cmd_path);
+		}
+		free(cmd_path);
+		dirs++;
+	}
+	return (NULL);
 }
 
-void	check_args(int argc, char **argv, char **envp)
-{
-	if (argc != 5)
-		err_quit(1);
-	check_files(argv[1], argv[4]);
-	check_cmds(argv[2], argv[3], envp);
-}
+char	**get_cmd_args

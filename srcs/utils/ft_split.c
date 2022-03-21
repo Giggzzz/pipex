@@ -6,11 +6,11 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 17:29:32 by gudias            #+#    #+#             */
-/*   Updated: 2021/10/27 12:47:56 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/21 12:34:15 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
 static int	count_words(char const *str, char c)
 {

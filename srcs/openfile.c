@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   openfile.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 17:46:31 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/21 12:40:52 by gudias           ###   ########.fr       */
+/*   Created: 2022/03/21 11:56:48 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/21 13:30:52 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_substr(char const *str, unsigned int start, size_t len)
+int	openfile(char *filepath, int o_flag)
 {
-	char	*res;
-	size_t	i;
+	int	fd;
 
-	if (!str)
-		return (NULL);
-	if (ft_strlen(str) < start)
-		start = ft_strlen(str);
-	if (ft_strlen(str) - start < len)
-		len = ft_strlen(str) - start;
-	res = malloc (sizeof (char) * (len + 1));
-	if (!res)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		res[i] = str[start + i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	if (!o_flag)
+		fd = open(filepath, O_RDONLY);
+	else
+		fd = open(filepath, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	if (fd < 0)
+		err_quit(3);
+	return (fd);
 }

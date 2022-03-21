@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 17:46:31 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/21 12:40:52 by gudias           ###   ########.fr       */
+/*   Created: 2021/10/18 11:47:39 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/21 14:11:54 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_substr(char const *str, unsigned int start, size_t len)
+int	ft_strncmp(const char *s1, const char *s2, size_t len)
 {
-	char	*res;
 	size_t	i;
 
-	if (!str)
-		return (NULL);
-	if (ft_strlen(str) < start)
-		start = ft_strlen(str);
-	if (ft_strlen(str) - start < len)
-		len = ft_strlen(str) - start;
-	res = malloc (sizeof (char) * (len + 1));
-	if (!res)
-		return (NULL);
+	if (len == 0)
+		return (0);
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
-		res[i] = str[start + i];
+		if (((unsigned char)s1[i] != (unsigned char)s2[i]) || (s1[i] == '\0'))
+			break ;
 		i++;
 	}
-	res[i] = '\0';
-	return (res);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

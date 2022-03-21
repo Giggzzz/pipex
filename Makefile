@@ -6,7 +6,7 @@
 #    By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:27:19 by gudias            #+#    #+#              #
-#    Updated: 2022/03/16 17:04:24 by gudias           ###   ########.fr        #
+#    Updated: 2022/03/21 18:38:50 by gudias           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,16 @@ RM		= rm -f
 SRCSDIR	= srcs
 OBJSDIR	= objs
 
-SRCS	= pipex.c error.c utils.c check_args.c \
-		  ft_printf/ft_printf.c ft_printf/get_flags.c ft_printf/print.c \
-		  ft_printf/print_format.c ft_printf/putters_count.c
+SRCS	= pipex.c error.c get_cmd.c exec_cmd.c openfile.c \
+		  $(addprefix utils/, ft_println.c ft_split.c ft_strlen.c \
+		  						ft_substr.c ft_strncmp.c ft_pathjoin.c)
+		  		
+
 
 OBJS	= $(SRCS:%.c=$(OBJSDIR)/%.o)
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
-	mkdir -p $(OBJSDIR) $(OBJSDIR)/ft_printf
+	mkdir -p $(OBJSDIR) $(OBJSDIR)/utils
 	$(CC) $(CLFAGS) $(INCL) -c $< -o $@
 
 all: $(NAME)
