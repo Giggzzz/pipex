@@ -1,45 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 14:06:49 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/21 19:28:02 by gudias           ###   ########.fr       */
+/*   Created: 2021/10/18 10:28:05 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/22 19:13:59 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_path(char **envp)
+char	*ft_strchr(const char *str, int c)
 {
-	while (*envp)
-	{
-		if (!ft_strncmp(*envp, "PATH=", 5))
-				return (*envp + 5);
-		envp++;
-	}
-	return (NULL);
+	while (*str != '\0' && *str != (char) c)
+		str++;
+	if ((char) c == *str)
+		return ((char *)str);
+	return (0);
 }
-
-char	*find_cmd_path(char *path, char *cmd)
-{
-	char	**dirs;
-	char	*cmd_path;
-
-	dirs = ft_split(path, ':');
-	while (*dirs)
-	{
-		cmd_path = ft_pathjoin(*dirs, cmd);
-		if (access(cmd_path, 0) == 0)
-		{
-			return (cmd_path);
-		}
-		free(cmd_path);
-		dirs++;
-	}
-	return (NULL);
-}
-
-char	**get_cmd_args
