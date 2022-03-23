@@ -1,3 +1,5 @@
 *.o
 *.swp
 pipex
+pipex-tester/
+pipex_tester_42/
