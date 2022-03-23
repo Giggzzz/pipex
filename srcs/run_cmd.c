@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:42:59 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/23 18:03:53 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/23 18:56:48 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*find_cmd_path(char *cmd, char **envp)
 		free(cmd_path);
 		dirs++;
 	}
+	free(dirs);
 	return (NULL);
 }
 
