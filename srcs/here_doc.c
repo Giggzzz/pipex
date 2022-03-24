@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:11:34 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/24 17:11:38 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/24 17:31:28 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	pipe_input(char *limiter, int pipe_fd[2])
 		if (rd_line[limiter_len] == '\n' && \
 			!ft_strncmp(limiter, rd_line, limiter_len))
 		{
+			free(rd_line);
 			close(pipe_fd[1]);
 			exit(0);
 		}
