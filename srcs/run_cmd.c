@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:42:59 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/24 18:27:08 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/24 18:51:17 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*find_cmd_path(char *cmd, char **envp)
 	char	**dirs;
 	char	*cmd_path;
 	char	*path;
-	int	i;
+	int		i;
 
 	path = get_path(envp);
 	dirs = ft_split(path, ':');
@@ -93,7 +93,7 @@ void	exec_cmd(char *cmd, char **envp)
 {
 	char	**cmd_args;
 	char	*tmp;
-	
+
 	cmd_args = ft_split(cmd, ' ');
 	if (*cmd_args[0] != '/' && *cmd_args[0] != '.' && *cmd_args[0] != '~')
 	{
