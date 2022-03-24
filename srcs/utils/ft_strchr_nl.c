@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   openfile.c                                         :+:      :+:    :+:   */
+/*   ft_strchr_nl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 11:56:48 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/24 15:56:56 by gudias           ###   ########.fr       */
+/*   Created: 2022/01/14 19:00:17 by gudias            #+#    #+#             */
+/*   Updated: 2022/03/07 15:22:39 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-
-int	openfile(char *filepath, int o_flag)
+char	*ft_strchr_nl(char *str)
 {
-	int	fd;
-
-	fd = -1;
-	if (o_flag == 0)
-		fd = open(filepath, O_RDONLY);
-	else if (o_flag == 1)
-		fd = open(filepath, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	else if (o_flag == 2)
-		fd = open(filepath, O_WRONLY | O_APPEND | O_CREAT, 0644);
-	if (fd < 0)
-		err_quit(3);
-	return (fd);
+	while (*str && *str != '\n')
+		str++;
+	return (str);
 }

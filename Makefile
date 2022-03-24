@@ -6,7 +6,7 @@
 #    By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:27:19 by gudias            #+#    #+#              #
-#    Updated: 2022/03/23 18:00:49 by gudias           ###   ########.fr        #
+#    Updated: 2022/03/24 17:06:35 by gudias           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ RM		= rm -f
 SRCSDIR	= srcs
 OBJSDIR	= objs
 
-SRCS	= pipex.c error.c run_cmd.c \
-		  $(addprefix utils/, ft_println.c ft_split.c ft_strlen.c openfile.c \
-		  						ft_substr.c ft_strncmp.c ft_pathjoin.c )
+SRCS	= pipex.c error.c run_cmd.c here_doc.c \
+		  $(addprefix utils/, ft_println.c ft_split.c ft_strlen.c \
+		  	ft_strchr_nl.c ft_substr.c ft_strncmp.c ft_pathjoin.c \
+			openfile.c get_next_line.c)
 		  		
 
 
@@ -48,9 +49,11 @@ fclean: clean
 	@$(RM) $(NAME)
 	@echo "$(RED)!! ./$(NAME) deleted !!$(DEFAULT)"
 
+bonus: re
+
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 #COLORS
 RED = \033[1;31m
