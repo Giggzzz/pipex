@@ -6,27 +6,39 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:39:46 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/23 19:08:32 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/25 13:24:52 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+static void	print_error(char *str)
+{
+	if (!str)
+		return ;
+	while (*str)
+	{
+		write(2, str, 1);
+		str++;
+	}
+	write(2, "\n", 1);
+}
+
 void	err_quit(int errno)
 {
 	if (errno == 1)
-		ft_println("ERROR: Bad arguments count");
+		print_error("Error: invalid arguments count");
 	else if (errno == 2)
-		ft_println("ERROR: Wrong arguments");
+		print_error("Error: wrong arguments");
 	else if (errno == 3)
-		perror("ERROR: File error");
+		print_error("Error: no such file or directory");
 	else if (errno == 4)
-		perror("ERROR: Command not found");
+		print_error("Error: command not found");
 	else if (errno == 5)
-		perror("ERROR: PIPE FAILED");
+		print_error("Error: pipe");
 	else if (errno == 6)
-		perror("ERROR: FORK FAILED");
+		print_error("Error: fork");
 	else if (errno == 7)
-		perror("ERROR: EXECVE FAILED");
-	exit(0);
+		print_error("Error: execve");
+	exit(1);
 }

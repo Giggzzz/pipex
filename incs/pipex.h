@@ -6,7 +6,7 @@
 /*   By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:27:12 by gudias            #+#    #+#             */
-/*   Updated: 2022/03/24 17:11:22 by gudias           ###   ########.fr       */
+/*   Updated: 2022/03/25 13:00:10 by gudias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	here_doc(char *limiter);
 void	err_quit(int errno);
 
 //utils
-void	ft_println(char *str);
 size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t len);
 char	*ft_substr(char const *str, unsigned int start, size_t len);

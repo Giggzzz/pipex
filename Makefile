@@ -6,7 +6,7 @@
 #    By: gudias <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:27:19 by gudias            #+#    #+#              #
-#    Updated: 2022/03/24 18:33:34 by gudias           ###   ########.fr        #
+#    Updated: 2022/03/25 13:21:11 by gudias           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,9 @@ SRCSDIR	= srcs
 OBJSDIR	= objs
 
 SRCS	= pipex.c error.c run_cmd.c here_doc.c \
-		  $(addprefix utils/, ft_println.c ft_split.c ft_strlen.c \
-		  	ft_strchr_nl.c ft_substr.c ft_strncmp.c ft_pathjoin.c \
-			openfile.c get_next_line.c)
+			$(addprefix utils/, ft_strlen.c ft_strncmp.c openfile.c ft_split.c \
+					ft_substr.c ft_pathjoin.c get_next_line.c ft_strchr_nl.c)
 		  		
-
-
 OBJS	= $(SRCS:%.c=$(OBJSDIR)/%.o)
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
